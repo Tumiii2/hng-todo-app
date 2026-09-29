@@ -1,4 +1,5 @@
 const express = require('express');
+const createNotesRouter = require('./routes/notes');
 const createTasksRouter = require('./routes/tasks');
 
 function createApp(database) {
@@ -11,6 +12,7 @@ function createApp(database) {
   });
 
   app.use('/api/tasks', createTasksRouter(database));
+  app.use('/api/notes', createNotesRouter(database));
 
   app.use((error, request, response, next) => {
     if (error.type === 'entity.parse.failed') {

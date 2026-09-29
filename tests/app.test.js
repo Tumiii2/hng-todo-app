@@ -23,6 +23,14 @@ describe('API', () => {
     return response.body;
   }
 
+  async function createNote(overrides = {}) {
+    const response = await request(app)
+      .post('/api/notes')
+      .send({ title: 'Meeting notes', content: 'Discuss the launch.', ...overrides });
+
+    return response.body;
+  }
+
   it('keeps the health check available', async () => {
     const response = await request(app).get('/health');
 
@@ -162,6 +170,130 @@ describe('API', () => {
 
     it('returns 404 when the task does not exist', async () => {
       const response = await request(app).delete('/api/tasks/999');
+
+      expect(response.status).toBe(404);
+    });
+  });
+
+  describe('GET /api/notes', () => {
+    it('lists notes including their creation timestamps', async () => {
+      const note = await createNote();
+      const response = await request(app).get('/api/notes');
+
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveLength(1);
+      expect(response.body[0]).toMatchObject({
+        id: note.id,
+        title: 'Meeting notes',
+        content: 'Discuss the launch.'
+      });
+      expect(response.body[0].created_at).toMatch(/^\d{4}-\d{2}-\d{2} /);
+    });
+
+    it('rejects unsupported query parameters', async () => {
+      const response = await request(app).get('/api/notes?page=2');
+
+      expect(response.status).toBe(400);
+    });
+  });
+
+  describe('POST /api/notes', () => {
+    it('creates a note with a database-generated timestamp', async () => {
+      const response = await request(app).post('/api/notes').send({
+        title: 'Project plan',
+        content: 'Draft the first milestone.'
+      });
+
+      expect(response.status).toBe(201);
+      expect(response.body).toMatchObject({
+        title: 'Project plan',
+        content: 'Draft the first milestone.'
+      });
+      expect(response.body.id).toEqual(expect.any(Number));
+      expect(response.body.created_at).toMatch(/^\d{4}-\d{2}-\d{2} /);
+    });
+
+    it('rejects a missing content field', async () => {
+      const response = await request(app).post('/api/notes').send({ title: 'Incomplete note' });
+
+      expect(response.status).toBe(400);
+    });
+  });
+
+  describe('PUT /api/notes/:id', () => {
+    it('replaces the note title and content', async () => {
+      const note = await createNote();
+      const response = await request(app).put(`/api/notes/${note.id}`).send({
+        title: 'Updated meeting',
+        content: 'Review action items.'
+      });
+
+      expect(response.status).toBe(200);
+      expect(response.body).toMatchObject({
+        id: note.id,
+        title: 'Updated meeting',
+        content: 'Review action items.',
+        created_at: note.created_at
+      });
+    });
+
+    it('rejects a replacement missing a field', async () => {
+      const note = await createNote();
+      const response = await request(app).put(`/api/notes/${note.id}`).send({ title: 'Updated title' });
+
+      expect(response.status).toBe(400);
+    });
+
+    it('returns 404 when the note does not exist', async () => {
+      const response = await request(app).put('/api/notes/999').send({
+        title: 'Missing note',
+        content: 'No note exists here.'
+      });
+
+      expect(response.status).toBe(404);
+    });
+  });
+
+  describe('PATCH /api/notes/:id', () => {
+    it('updates only the supplied fields', async () => {
+      const note = await createNote();
+      const response = await request(app).patch(`/api/notes/${note.id}`).send({ content: 'New content.' });
+
+      expect(response.status).toBe(200);
+      expect(response.body).toMatchObject({
+        id: note.id,
+        title: 'Meeting notes',
+        content: 'New content.',
+        created_at: note.created_at
+      });
+    });
+
+    it('rejects an unsupported field', async () => {
+      const note = await createNote();
+      const response = await request(app).patch(`/api/notes/${note.id}`).send({ created_at: 'tomorrow' });
+
+      expect(response.status).toBe(400);
+    });
+
+    it('returns 404 when the note does not exist', async () => {
+      const response = await request(app).patch('/api/notes/999').send({ content: 'Missing note.' });
+
+      expect(response.status).toBe(404);
+    });
+  });
+
+  describe('DELETE /api/notes/:id', () => {
+    it('deletes an existing note', async () => {
+      const note = await createNote();
+      const response = await request(app).delete(`/api/notes/${note.id}`);
+
+      expect(response.status).toBe(204);
+      const listResponse = await request(app).get('/api/notes');
+      expect(listResponse.body).toEqual([]);
+    });
+
+    it('returns 404 when the note does not exist', async () => {
+      const response = await request(app).delete('/api/notes/999');
 
       expect(response.status).toBe(404);
     });
