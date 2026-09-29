@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#7451c8">
-    <title>Daylight | Tasks & Notes</title>
+    <title>TickIt by Eniola</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -16,18 +16,10 @@
     <header class="hero-banner">
       <div class="hero-inner mx-auto flex max-w-7xl items-center justify-between gap-8 px-5 py-10 sm:px-8 lg:px-12">
         <div class="hero-copy">
-          <p class="hero-eyebrow"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M5.64 5.64l12.72 12.72M18.36 5.64 5.64 18.36"/></svg> YOUR LITTLE SPACE TO RESET</p>
-          <h1>Make room for<br class="hidden sm:block"> what matters.</h1>
-          <p class="hero-subtitle">A softer landing for all the things on your mind.</p>
+          <div class="brand-lockup"><span class="brand-name">TickIt</span><span class="brand-byline">by Eniola</span></div>
+          <h1>Tick it off.<br class="hidden sm:block"> Write it down.</h1>
         </div>
-        <aside class="day-summary" aria-label="Task summary">
-          <div class="summary-spark" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.64 5.64l12.72 12.72M18.36 5.64 5.64 18.36"/></svg></div>
-          <p class="summary-label">A FRESH START</p>
-          <p class="summary-count"><span id="open-count">0</span> <span>little things to do</span></p>
-          <p id="today-label" class="summary-date"></p>
-        </aside>
       </div>
-      <div class="hero-ribbon" aria-hidden="true"></div>
     </header>
 
     <main class="mx-auto max-w-7xl px-5 pb-16 pt-8 sm:px-8 lg:px-12 lg:pt-10">
@@ -37,16 +29,15 @@
         <section class="workspace-column" aria-labelledby="tasks-heading">
           <div class="section-heading">
             <div>
-              <p class="section-kicker">ONE THING AT A TIME</p>
-              <h2 id="tasks-heading">Your tasks <span class="heading-mark" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.64 5.64l12.72 12.72M18.36 5.64 5.64 18.36"/></svg></span></h2>
+              <h2 id="tasks-heading">Tasks</h2>
             </div>
             <span id="task-count" class="count-chip">0 tasks</span>
           </div>
 
           <form id="task-form" class="composer task-composer">
-            <label class="sr-only" for="task-title">What needs doing?</label>
+            <label class="sr-only" for="task-title">Task title</label>
             <div class="title-entry-row">
-              <input id="task-title" name="title" type="text" maxlength="200" placeholder="What needs doing?" required autocomplete="off">
+              <input id="task-title" name="title" type="text" maxlength="200" placeholder="Task title" required autocomplete="off">
               <button class="primary-button add-task-button" type="submit"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Add task</span></button>
             </div>
             <div class="composer-options">
@@ -64,11 +55,10 @@
           </form>
 
           <div class="list-toolbar">
-            <p class="list-label">YOUR LIST</p>
             <div class="filter-tabs" role="group" aria-label="Filter tasks">
               <button type="button" class="filter-button is-selected" data-filter="all" aria-pressed="true">All</button>
               <button type="button" class="filter-button" data-filter="active" aria-pressed="false">Active</button>
-              <button type="button" class="filter-button" data-filter="completed" aria-pressed="false">Done</button>
+              <button type="button" class="filter-button" data-filter="completed" aria-pressed="false">Completed</button>
             </div>
           </div>
           <div id="task-list" class="item-list" aria-live="polite" aria-busy="true"></div>
@@ -77,38 +67,30 @@
         <section class="workspace-column notes-column" aria-labelledby="notes-heading">
           <div class="section-heading">
             <div>
-              <p class="section-kicker">SAVE THAT THOUGHT</p>
-              <h2 id="notes-heading">Notes <span class="heading-mark note-mark" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm8 1v5h5M8 13h8M8 17h8"/></svg></span></h2>
+              <h2 id="notes-heading">Notes</h2>
             </div>
             <span id="note-count" class="count-chip count-chip-peach">0 notes</span>
           </div>
 
           <form id="note-form" class="composer note-composer">
             <label class="sr-only" for="note-title">Note title</label>
-            <input id="note-title" name="title" type="text" maxlength="200" placeholder="Give this note a title" required autocomplete="off">
+            <input id="note-title" name="title" type="text" maxlength="200" placeholder="Note title" required autocomplete="off">
             <label class="sr-only" for="note-content">Note content</label>
-            <textarea id="note-content" name="content" rows="3" placeholder="A thought, a detail, a tiny reminder..." required></textarea>
+            <textarea id="note-content" name="content" rows="3" placeholder="Note content" required></textarea>
             <div class="note-submit-row">
-              <span class="form-hint">Your ideas have a home.</span>
               <button class="secondary-button" type="submit"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Save note</button>
             </div>
           </form>
 
-          <div class="list-toolbar notes-toolbar">
-            <p class="list-label">PINNED THOUGHTS</p>
-            <span id="note-total-label" class="quiet-count">0 saved</span>
-          </div>
           <div id="note-list" class="item-list note-list" aria-live="polite" aria-busy="true"></div>
         </section>
       </div>
-      <footer class="page-footer"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M5.64 5.64l12.72 12.72M18.36 5.64 5.64 18.36"/></svg> Small steps still move you forward.</footer>
     </main>
 
     <dialog id="edit-dialog" class="edit-dialog" aria-labelledby="edit-heading">
       <form id="edit-form" class="edit-form">
         <div class="dialog-topline">
           <div>
-            <p id="edit-kicker" class="section-kicker">A LITTLE TWEAK</p>
             <h2 id="edit-heading">Edit item</h2>
           </div>
           <button id="close-dialog" class="icon-button close-button" type="button" aria-label="Close editor" title="Close"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
@@ -126,9 +108,9 @@
         <div class="warning-icon" aria-hidden="true">
           <svg class="ui-icon" viewBox="0 0 24 24"><path d="M12 8v5m0 4h.01M10.3 3.9 2.2 18a1.4 1.4 0 0 0 1.2 2.1h17.2a1.4 1.4 0 0 0 1.2-2.1l-8.1-14.1a1.4 1.4 0 0 0-2.4 0Z"/></svg>
         </div>
-        <p class="delete-eyebrow">JUST A QUICK CHECK</p>
         <h2 id="delete-heading">Delete this task?</h2>
-        <p id="delete-description" class="delete-description">This will permanently remove <strong id="delete-item-name"></strong>.</p>
+        <p id="delete-description" class="delete-description">This item will be permanently deleted:</p>
+        <p id="delete-item-name" class="delete-item-name"></p>
         <div class="delete-actions">
           <button id="cancel-delete" class="quiet-button" type="button">Cancel</button>
           <button id="confirm-delete" class="delete-confirm-button" type="submit">Delete</button>

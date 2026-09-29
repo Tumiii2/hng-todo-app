@@ -100,11 +100,8 @@ function showMessage(message, tone = 'error') {
 }
 
 function updateCounts() {
-  const openCount = state.tasks.filter((task) => !task.completed).length;
-  document.querySelector('#open-count').textContent = openCount;
   document.querySelector('#task-count').textContent = `${state.tasks.length} ${state.tasks.length === 1 ? 'task' : 'tasks'}`;
   document.querySelector('#note-count').textContent = `${state.notes.length} ${state.notes.length === 1 ? 'note' : 'notes'}`;
-  document.querySelector('#note-total-label').textContent = `${state.notes.length} saved`;
 }
 
 function formatDueDate(value) {
@@ -135,7 +132,7 @@ function createEmptyState(iconName, title, description, retry) {
   emptyMark.append(createIcon(iconName));
   emptyState.append(emptyMark);
   emptyState.append(makeElement('h3', '', title));
-  emptyState.append(makeElement('p', '', description));
+  if (description) emptyState.append(makeElement('p', '', description));
 
   if (retry) {
     const retryButton = makeElement('button', 'retry-button', 'Try again');
@@ -173,12 +170,11 @@ function renderTasks() {
   });
 
   if (visibleTasks.length === 0) {
-    const hasTasks = state.tasks.length > 0;
     const content = state.filter === 'completed'
-      ? ['check', 'Nothing checked off yet', 'Your finished tasks will show up here.']
-      : state.filter === 'active' && hasTasks
-        ? ['check', 'All caught up', 'Every task on your list is done.']
-        : ['sparkle', 'A clean slate', 'Add one small thing you want to get done.'];
+      ? ['check', 'No completed tasks', '']
+      : state.filter === 'active'
+        ? ['check', 'No active tasks', '']
+        : ['sparkle', 'No tasks', ''];
     taskList.append(createEmptyState(content[0], content[1], content[2]));
     return;
   }
@@ -227,7 +223,7 @@ function renderNotes() {
   }
 
   if (state.notes.length === 0) {
-    noteList.append(createEmptyState('note', 'No notes yet', 'Save a thought here so it is easy to find later.'));
+    noteList.append(createEmptyState('note', 'No notes', ''));
     return;
   }
 
@@ -429,7 +425,6 @@ function createNoteFields(note) {
 function openTaskEditor(task) {
   state.editType = 'task';
   state.editId = task.id;
-  document.querySelector('#edit-kicker').textContent = 'A LITTLE TWEAK';
   document.querySelector('#edit-heading').textContent = 'Edit task';
   createTaskFields(task);
   editDialog.showModal();
@@ -439,7 +434,6 @@ function openTaskEditor(task) {
 function openNoteEditor(note) {
   state.editType = 'note';
   state.editId = note.id;
-  document.querySelector('#edit-kicker').textContent = 'A LITTLE TWEAK';
   document.querySelector('#edit-heading').textContent = 'Edit note';
   createNoteFields(note);
   editDialog.showModal();
@@ -476,7 +470,7 @@ taskForm.addEventListener('submit', async (event) => {
       filterButton.setAttribute('aria-pressed', String(selected));
     });
     render();
-    showMessage('Task added. One little thing at a time.', 'success');
+    showMessage('Task added.', 'success');
     taskForm.elements.title.focus();
   } catch (error) {
     showMessage(`Could not save this task. ${error.message}`);
@@ -491,7 +485,7 @@ noteForm.addEventListener('submit', async (event) => {
   const title = noteForm.elements.title.value.trim();
   const content = noteForm.elements.content.value;
   if (!title || !content.trim()) {
-    showMessage('Add a title and a little note content before saving.');
+    showMessage('Enter a title and note content.');
     (!title ? noteForm.elements.title : noteForm.elements.content).focus();
     return;
   }
@@ -505,7 +499,7 @@ noteForm.addEventListener('submit', async (event) => {
     state.notes.push(note);
     noteForm.reset();
     render();
-    showMessage('Note saved for later.', 'success');
+    showMessage('Note saved.', 'success');
     noteForm.elements.title.focus();
   } catch (error) {
     showMessage(`Could not save this note. ${error.message}`);
@@ -617,9 +611,5 @@ deleteDialog.addEventListener('cancel', (event) => {
 deleteDialog.addEventListener('click', (event) => {
   if (event.target === deleteDialog && !confirmDeleteButton.disabled) closeDeleteDialog();
 });
-
-document.querySelector('#today-label').textContent = new Intl.DateTimeFormat(undefined, {
-  weekday: 'long', month: 'long', day: 'numeric'
-}).format(new Date());
 
 loadData();

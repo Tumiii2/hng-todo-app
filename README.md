@@ -1,4 +1,4 @@
-# hng-to-do-app
+# TickIt by Eniola
 
 ## Run locally
 
