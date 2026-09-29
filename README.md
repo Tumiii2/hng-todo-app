@@ -1,5 +1,9 @@
 # TickIt by Eniola
 
+Live app: [https://tickit-eniola.onrender.com](https://tickit-eniola.onrender.com)
+
+The free plan may sleep after inactivity, and stored data may reset.
+
 ## Run locally
 
 Install dependencies and start the server:
