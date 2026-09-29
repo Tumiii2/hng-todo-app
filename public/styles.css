@@ -87,7 +87,7 @@ textarea:focus-visible {
 .section-heading h2,
 .dialog-topline h2 {
   margin: 0;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Fraunces", Georgia, serif;
   font-weight: 700;
 }
 
@@ -925,5 +925,701 @@ textarea:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+:root {
+  --ink: #271b45;
+  --muted: #766b8d;
+  --purple: #603caf;
+  --purple-deep: #43277f;
+  --lavender: #eee7ff;
+  --line: rgb(105 81 147 / 15%);
+}
+
+body {
+  background-color: #eee8fa;
+  background-image:
+    radial-gradient(ellipse at 13% 17%, rgb(255 255 255 / 78%), transparent 34%),
+    radial-gradient(ellipse at 91% 42%, rgb(210 195 244 / 66%), transparent 38%),
+    linear-gradient(145deg, #f4effc 0%, #eae2f8 48%, #f7eff8 100%);
+  background-attachment: fixed;
+}
+
+.hero-banner {
+  background: linear-gradient(112deg, #39216f 0%, #5b3a9f 49%, #9276cb 100%);
+  box-shadow: 0 18px 45px rgb(52 31 91 / 20%);
+}
+
+.hero-inner {
+  min-height: 278px;
+}
+
+.hero-copy h1,
+.section-heading h2,
+.dialog-topline h2,
+#delete-heading {
+  font-family: "Fraunces", Georgia, serif;
+  letter-spacing: 0;
+}
+
+.hero-copy h1 {
+  font-size: 49px;
+  line-height: 1.08;
+}
+
+.hero-subtitle {
+  color: #f0eaff;
+}
+
+.ui-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  vertical-align: middle;
+}
+
+.hero-eyebrow .ui-icon {
+  width: 15px;
+  height: 15px;
+  color: #f4d783;
+}
+
+.summary-spark .ui-icon {
+  width: 25px;
+  height: 25px;
+  color: #f4d783;
+}
+
+.day-summary {
+  border-color: rgb(255 255 255 / 32%);
+  background: linear-gradient(145deg, rgb(255 255 255 / 17%), rgb(255 255 255 / 8%));
+  box-shadow: 0 16px 36px rgb(29 15 61 / 20%), inset 0 1px rgb(255 255 255 / 22%);
+  backdrop-filter: blur(16px);
+}
+
+.summary-label {
+  letter-spacing: 0;
+}
+
+.workspace-grid {
+  gap: clamp(30px, 4vw, 58px);
+}
+
+.workspace-column {
+  padding: 11px 0 15px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.section-heading {
+  min-height: 60px;
+  margin-bottom: 15px;
+}
+
+.section-heading h2 {
+  font-size: 31px;
+}
+
+.section-kicker,
+.list-label {
+  letter-spacing: 0;
+  color: #71618f;
+}
+
+.heading-mark .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.heading-mark {
+  margin-left: 5px;
+  color: #b18be3;
+  vertical-align: 2px;
+}
+
+.note-mark {
+  color: #da8275;
+}
+
+.count-chip {
+  border: 1px solid rgb(105 73 161 / 10%);
+  background: rgb(255 255 255 / 61%);
+  box-shadow: 0 5px 16px rgb(66 41 107 / 7%);
+  color: #4a3182;
+}
+
+.count-chip-peach {
+  background: rgb(255 245 238 / 82%);
+  color: #87463e;
+}
+
+.composer {
+  margin-top: 0;
+  padding: 17px;
+  border: 1px solid rgb(255 255 255 / 90%);
+  border-radius: 19px;
+  background: rgb(255 255 255 / 62%);
+  box-shadow: 0 10px 28px rgb(62 40 101 / 8%), inset 0 1px rgb(255 255 255 / 88%);
+  backdrop-filter: blur(16px);
+}
+
+.composer input,
+.composer select,
+.composer textarea,
+.edit-fields input,
+.edit-fields select,
+.edit-fields textarea {
+  border-color: #dfd5eb;
+  border-radius: 13px;
+  background-color: rgb(255 255 255 / 87%);
+}
+
+.composer input:focus,
+.composer select:focus,
+.composer textarea:focus,
+.edit-fields input:focus,
+.edit-fields select:focus,
+.edit-fields textarea:focus {
+  border-color: #8969c0;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgb(112 78 175 / 16%);
+}
+
+.primary-button,
+.secondary-button,
+.quiet-button,
+.delete-confirm-button {
+  border-radius: 13px;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, filter 160ms ease;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #6441b1, #7958c2);
+  box-shadow: 0 6px 14px rgb(74 44 132 / 23%), inset 0 1px rgb(255 255 255 / 18%);
+}
+
+.secondary-button {
+  background: linear-gradient(135deg, #f9e1dc, #f4cfc9);
+  box-shadow: 0 5px 13px rgb(141 70 64 / 11%), inset 0 1px rgb(255 255 255 / 75%);
+  color: #763b36;
+}
+
+.add-task-button .ui-icon,
+.secondary-button .ui-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.field-label > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #655380;
+}
+
+.field-label .ui-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.list-toolbar {
+  margin-top: 23px;
+}
+
+.filter-tabs {
+  border: 1px solid rgb(105 73 161 / 10%);
+  background: rgb(93 69 139 / 8%);
+}
+
+.filter-button.is-selected {
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 3px 8px rgb(56 37 86 / 13%);
+  color: #4a3182;
+}
+
+.item-list {
+  display: grid;
+  gap: 10px;
+  padding-top: 9px;
+}
+
+.task-item,
+.note-item {
+  min-width: 0;
+  margin: 0;
+  padding: 15px 15px;
+  border: 1px solid rgb(255 255 255 / 88%);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgb(255 255 255 / 82%), rgb(255 255 255 / 62%));
+  box-shadow: 0 8px 22px rgb(61 41 98 / 8%), inset 0 1px rgb(255 255 255 / 95%);
+  backdrop-filter: blur(14px);
+  animation: item-in 300ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.task-item:hover,
+.note-item:hover {
+  transform: translateY(-3px);
+  border-color: rgb(129 99 185 / 24%);
+  box-shadow: 0 14px 28px rgb(61 41 98 / 13%), inset 0 1px rgb(255 255 255 / 95%);
+}
+
+.task-item.is-removing,
+.note-item.is-removing {
+  pointer-events: none;
+  animation: item-out 220ms ease-in forwards;
+}
+
+.task-item.is-completing {
+  animation: task-complete 340ms ease both;
+}
+
+.task-checkbox {
+  position: relative;
+  appearance: none;
+  width: 21px;
+  height: 21px;
+  border: 1.5px solid #ac9ac7;
+  border-radius: 7px;
+  background: rgb(255 255 255 / 84%);
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.task-checkbox:hover {
+  border-color: #6747a9;
+  box-shadow: 0 0 0 4px rgb(112 78 175 / 10%);
+}
+
+.task-checkbox:checked {
+  border-color: #6140a7;
+  background: #6140a7;
+  animation: check-pop 320ms cubic-bezier(0.2, 1.7, 0.4, 1) both;
+}
+
+.task-checkbox::after {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 6px;
+  height: 10px;
+  transform: rotate(45deg) scale(0.5);
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  content: "";
+  opacity: 0;
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+
+.task-checkbox:checked::after {
+  transform: rotate(45deg) scale(1);
+  opacity: 1;
+}
+
+.task-item.is-complete {
+  background: linear-gradient(135deg, rgb(249 255 250 / 89%), rgb(239 249 242 / 70%));
+}
+
+.task-title,
+.note-title {
+  color: #30234f;
+  font-weight: 600;
+}
+
+.item-actions {
+  gap: 3px;
+  opacity: 0.76;
+}
+
+.icon-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+}
+
+.icon-button .ui-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-button.delete-button:hover {
+  background: #fde7e5;
+  color: #a72f35;
+}
+
+.priority-badge,
+.due-badge {
+  min-height: 23px;
+  padding: 3px 9px;
+  font-size: 10px;
+}
+
+.priority-low {
+  background: #dff2e3;
+  color: #28683f;
+}
+
+.priority-medium {
+  background: #fff0bd;
+  color: #7b5b0e;
+}
+
+.priority-high {
+  background: #ffdfdc;
+  color: #9b3735;
+}
+
+.due-badge {
+  background: #ece6f4;
+  color: #625477;
+}
+
+.due-badge.is-overdue {
+  background: #ffdfdc;
+  color: #9b3735;
+}
+
+.note-decoration {
+  width: 4px;
+  min-height: 43px;
+  background: #de9c8d;
+}
+
+.note-content {
+  color: #5f5571;
+}
+
+.note-date {
+  color: #7a6e8d;
+}
+
+.empty-state {
+  min-height: 174px;
+  border: 1px dashed rgb(109 83 157 / 22%);
+  border-radius: 18px;
+  background: rgb(255 255 255 / 31%);
+}
+
+.empty-mark {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgb(117 81 176 / 12%);
+  background: linear-gradient(145deg, #f8f4ff, #e9e0f8);
+  color: #5d428f;
+}
+
+.empty-mark .ui-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.empty-state h3 {
+  color: #33254f;
+  font-size: 14px;
+}
+
+.empty-state p {
+  color: #726784;
+}
+
+.page-footer {
+  color: #655879;
+}
+
+.page-footer .ui-icon {
+  width: 13px;
+  height: 13px;
+  color: #8c6abb;
+}
+
+.edit-dialog {
+  border-color: rgb(255 255 255 / 90%);
+  background: rgb(255 255 255 / 92%);
+  box-shadow: 0 28px 90px rgb(34 20 65 / 32%), inset 0 1px #fff;
+  backdrop-filter: blur(18px);
+}
+
+.edit-dialog::backdrop {
+  background: rgb(35 21 58 / 54%);
+  backdrop-filter: blur(5px);
+}
+
+.close-button .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.quiet-button {
+  border: 1px solid #e2daeb;
+  background: rgb(255 255 255 / 85%);
+  color: #584d6b;
+}
+
+.delete-dialog {
+  width: min(430px, calc(100% - 32px));
+  max-width: none;
+  padding: 0;
+  overflow: visible;
+  border: 1px solid rgb(255 255 255 / 90%);
+  border-radius: 26px;
+  background: transparent;
+  box-shadow: 0 30px 100px rgb(24 13 45 / 35%);
+  color: var(--ink);
+  animation: delete-dialog-in 220ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.delete-dialog::backdrop {
+  background: rgb(31 20 49 / 55%);
+  backdrop-filter: blur(7px);
+  animation: backdrop-in 220ms ease both;
+}
+
+.delete-dialog.is-closing {
+  animation: delete-dialog-out 180ms ease forwards;
+}
+
+.delete-dialog.is-closing::backdrop {
+  animation: backdrop-out 180ms ease forwards;
+}
+
+.delete-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 30px 26px;
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 25px;
+  background: linear-gradient(145deg, rgb(255 255 255 / 97%), rgb(248 244 253 / 94%));
+  box-shadow: inset 0 1px rgb(255 255 255 / 98%);
+  text-align: center;
+  backdrop-filter: blur(22px);
+}
+
+.warning-icon {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  margin-bottom: 15px;
+  border: 1px solid #f4d4d0;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fff0ed, #ffe1dc);
+  color: #b34743;
+  box-shadow: 0 8px 18px rgb(160 67 65 / 12%), inset 0 1px #fff;
+}
+
+.warning-icon .ui-icon {
+  width: 25px;
+  height: 25px;
+  stroke-width: 1.7;
+}
+
+.delete-eyebrow {
+  margin: 0 0 5px;
+  color: #887895;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+#delete-heading {
+  margin: 0;
+  color: #30234f;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.delete-description {
+  max-width: 310px;
+  margin: 11px 0 0;
+  overflow-wrap: anywhere;
+  color: #72677f;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.delete-description strong {
+  color: #392b56;
+  font-weight: 700;
+}
+
+.delete-actions {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.delete-actions button {
+  min-width: 112px;
+}
+
+.delete-confirm-button {
+  min-height: 43px;
+  padding: 0 18px;
+  border: 1px solid #a72f35;
+  background: linear-gradient(135deg, #bd4147, #a92f39);
+  box-shadow: 0 6px 14px rgb(155 43 54 / 22%), inset 0 1px rgb(255 255 255 / 17%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.delete-confirm-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #ca4b51, #ad303b);
+  box-shadow: 0 9px 17px rgb(155 43 54 / 25%);
+}
+
+.primary-button:active,
+.secondary-button:active,
+.quiet-button:active,
+.delete-confirm-button:active {
+  transform: scale(0.97);
+}
+
+.primary-button:disabled,
+.secondary-button:disabled,
+.quiet-button:disabled,
+.delete-confirm-button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+  transform: none;
+}
+
+@keyframes item-in {
+  from {
+    opacity: 0;
+    transform: translateY(9px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes item-out {
+  to {
+    opacity: 0;
+    transform: translateX(10px) scale(0.98);
+    max-height: 0;
+    margin-top: -10px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@keyframes task-complete {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.018);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes check-pop {
+  0% {
+    transform: scale(0.8);
+  }
+
+  58% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes delete-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes delete-dialog-out {
+  to {
+    opacity: 0;
+    transform: translateY(7px) scale(0.98);
+  }
+}
+
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes backdrop-out {
+  to { opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .workspace-column {
+    padding: 9px 0 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-inner {
+    min-height: 0;
+  }
+
+  .hero-copy h1 {
+    font-size: 38px;
+  }
+
+  .workspace-column {
+    padding: 7px 0 10px;
+  }
+
+  .composer {
+    padding: 14px;
+    border-radius: 17px;
+  }
+
+  .task-item,
+  .note-item {
+    padding: 13px 12px;
+    border-radius: 16px;
+  }
+
+  .delete-card {
+    padding: 25px 20px 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .task-item,
+  .note-item,
+  .task-item.is-completing,
+  .task-item.is-removing,
+  .note-item.is-removing,
+  .delete-dialog,
+  .delete-dialog.is-closing,
+  .delete-dialog::backdrop,
+  .delete-dialog.is-closing::backdrop {
+    animation-duration: 0.01ms !important;
   }
 }
