@@ -1,0 +1,19 @@
+{
+  "name": "hng-to-do-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A to-do list app with notes and due dates.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest --runInBand"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  }
+}
